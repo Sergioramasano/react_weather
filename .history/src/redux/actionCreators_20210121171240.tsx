@@ -1,0 +1,1 @@
+export const doAddToDoItem = (payload:number) => ({ type: 'TODO_ADDED', payload })

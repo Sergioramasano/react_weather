@@ -1,0 +1,13 @@
+.Card {
+  width: 200px;
+  margin-right: 20px;
+  margin-bottom: 20px;
+  padding: 1rem;
+}
+
+.Wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 600px;
+  width: 100%;
+}

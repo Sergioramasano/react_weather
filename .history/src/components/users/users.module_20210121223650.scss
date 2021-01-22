@@ -1,0 +1,22 @@
+.Card {
+  width: 250px;
+  margin-right: 20px;
+  margin-bottom: 20px;
+  padding: 1rem;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.Wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 950px;
+  margin: auto;
+  padding: 2rem;
+}
+
+.Photo {
+  width: 150px;
+}
