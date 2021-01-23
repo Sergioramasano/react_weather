@@ -1,0 +1,14 @@
+.Card{
+  width: 550px;
+  ul{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    li{
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 1rem;
+      border-bottom: 1px solid lightslategray;
+    }
+  }
+}

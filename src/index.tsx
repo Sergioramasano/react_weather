@@ -9,7 +9,7 @@ import App from "./App";
 
 const rootElement = document.getElementById("root");
 let store = createStore(rootReducer);
-store.subscribe(() => console.log(store.getState()));
+store.subscribe(() => console.log(store.getState(), 111));
 const app = (
   <Provider store={store}>
     <App />

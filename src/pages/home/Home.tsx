@@ -1,11 +1,14 @@
 import { TextField } from "@material-ui/core";
-import React from "react";
+import React, {useState} from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import { connect } from "react-redux";
-import { setCity } from "../../redux/actionCreators";
+import {setCity, setCityWeather} from "../../redux/actionCreators";
 import { Dispatch } from "redux";
+import  WeatherCard from '../../components/WeatherCard/WeatherCard'
 
 import "./Home.scss";
+import axios from "axios";
+console.log(process.env.API_KEY);
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -18,9 +21,17 @@ const useStyles = makeStyles((theme) => ({
 
 const Home = (props: any) => {
   const classes = useStyles();
+  const inputHandler = (event: any):any => {
+    console.log();
 
-  const inputHandler = (event: React.ChangeEvent<HTMLInputElement>): void => {
-    props.setCityName();
+    if (event.key === 'Enter') {
+      event.preventDefault();
+      props.setCityName(event.target.value);
+      axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${event.target.value}&appid=${"89131358011ec8066582be44f133475a"}`).then((res:any)=>{
+        props.setCityWeatherByName(res.data);
+      })
+
+    }
   };
 
   return (
@@ -32,9 +43,12 @@ const Home = (props: any) => {
             error={false}
             id="standard-error-helper-text"
             label="Enter city name"
-            onChange={inputHandler}
+            onKeyPress={inputHandler}
             helperText={"efwe"}
           />
+          <section className="cards">
+            {props.weather ? <WeatherCard weather={props.weather} /> : <h3>No data</h3>}
+          </section>
         </div>
       </form>
     </section>
@@ -44,12 +58,15 @@ const Home = (props: any) => {
 const mapStateToProps = (state: any) => {
   return {
     cityName: state.city,
+    weather: state.cityWeather,
+
   };
 };
 
 const mapDispatchToProps = (dispatch: Dispatch) => {
   return {
-    setCityName: () => dispatch(setCity()),
+    setCityName: (payload:string) => dispatch(setCity(payload)),
+    setCityWeatherByName: (payload:any) => dispatch(setCityWeather(payload)),
   };
 };
 
