@@ -1,13 +1,23 @@
 import { TextField } from "@material-ui/core";
-import React, { useState } from "react";
+import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import { connect } from "react-redux";
 import { setCity, setCityWeather } from "../../redux/actionCreators";
 import { Dispatch } from "redux";
 import WeatherCard from "../../components/WeatherCard/WeatherCard";
+import { withStyles } from "@material-ui/core";
+
 import "./Home.scss";
 import axios from "axios";
 
+const styles = {
+  searchUser__block: {
+    background: "#f6f6f6",
+    height: "calc(100% - 64px)",
+    position: "relative",
+    top: "64px",
+  },
+};
 const useStyles = makeStyles((theme) => ({
   root: {
     "& .MuiTextField-root": {
@@ -19,10 +29,9 @@ const useStyles = makeStyles((theme) => ({
 
 const Home = (props: any) => {
   const classes = useStyles();
-  const [errorState, setErrorState] = useState(false);
-
   const inputHandler = (event: any): any => {
-    setError();
+    console.log();
+
     if (event.key === "Enter") {
       event.preventDefault();
       props.setCityName(event.target.value);
@@ -38,31 +47,17 @@ const Home = (props: any) => {
     }
   };
 
-  const setErroroText = () => {
-    if (!props.cityName) {
-      return "it is the required field!";
-    }
-  };
-
-  const setError = () => {
-    if (props.cityName) {
-      setErrorState(true);
-    } else {
-      setErrorState(false);
-    }
-  };
-
   return (
     <section className="Home">
       <h1>Home</h1>
       <form className={classes.root} noValidate autoComplete="off">
         <div>
           <TextField
-            error={errorState}
+            error={false}
             id="standard-error-helper-text"
             label="Enter city name"
             onKeyPress={inputHandler}
-            helperText={setErroroText()}
+            helperText={"efwe"}
           />
           <section className="cards">
             {props.weather ? (
@@ -91,4 +86,4 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Home);
+export default withStyles()(connect(mapStateToProps, mapDispatchToProps)(Home));

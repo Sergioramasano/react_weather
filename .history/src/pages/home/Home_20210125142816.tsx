@@ -19,10 +19,10 @@ const useStyles = makeStyles((theme) => ({
 
 const Home = (props: any) => {
   const classes = useStyles();
-  const [errorState, setErrorState] = useState(false);
-
+  const [errorState, setErrorState] = useState(true);
   const inputHandler = (event: any): any => {
-    setError();
+    console.log();
+
     if (event.key === "Enter") {
       event.preventDefault();
       props.setCityName(event.target.value);
@@ -40,15 +40,8 @@ const Home = (props: any) => {
 
   const setErroroText = () => {
     if (!props.cityName) {
-      return "it is the required field!";
-    }
-  };
-
-  const setError = () => {
-    if (props.cityName) {
       setErrorState(true);
-    } else {
-      setErrorState(false);
+      return "it is the required field!";
     }
   };
 

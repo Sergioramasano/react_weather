@@ -6,10 +6,10 @@ import {
   SET_CITY_WEATHER,
 } from "./actionTypes";
 
-interface IState {
-  counter: number;
-  city: string;
-  cityWeather: any;
+interface IState = {
+  counter: number,
+  city: string,
+  cityWeather: object,
 }
 
 const initialState: IState = {

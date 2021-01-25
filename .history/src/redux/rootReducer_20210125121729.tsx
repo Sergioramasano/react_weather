@@ -9,13 +9,13 @@ import {
 interface IState {
   counter: number;
   city: string;
-  cityWeather: any;
+  cityWeather: object;
 }
 
 const initialState: IState = {
   counter: 0,
   city: "",
-  cityWeather: null,
+  cityWeather: {},
 };
 
 interface actionTypes {

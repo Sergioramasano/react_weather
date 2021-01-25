@@ -9,7 +9,7 @@ import {
 interface IState {
   counter: number;
   city: string;
-  cityWeather: any;
+  cityWeather: object;
 }
 
 const initialState: IState = {

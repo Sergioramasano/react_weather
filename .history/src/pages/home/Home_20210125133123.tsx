@@ -1,5 +1,5 @@
 import { TextField } from "@material-ui/core";
-import React, { useState } from "react";
+import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import { connect } from "react-redux";
 import { setCity, setCityWeather } from "../../redux/actionCreators";
@@ -19,10 +19,9 @@ const useStyles = makeStyles((theme) => ({
 
 const Home = (props: any) => {
   const classes = useStyles();
-  const [errorState, setErrorState] = useState(false);
-
   const inputHandler = (event: any): any => {
-    setError();
+    console.log();
+
     if (event.key === "Enter") {
       event.preventDefault();
       props.setCityName(event.target.value);
@@ -38,38 +37,20 @@ const Home = (props: any) => {
     }
   };
 
-  const setErroroText = () => {
-    if (!props.cityName) {
-      return "it is the required field!";
-    }
-  };
-
-  const setError = () => {
-    if (props.cityName) {
-      setErrorState(true);
-    } else {
-      setErrorState(false);
-    }
-  };
-
   return (
     <section className="Home">
       <h1>Home</h1>
       <form className={classes.root} noValidate autoComplete="off">
         <div>
           <TextField
-            error={errorState}
+            error={false}
             id="standard-error-helper-text"
             label="Enter city name"
             onKeyPress={inputHandler}
-            helperText={setErroroText()}
+            helperText={"efwe"}
           />
           <section className="cards">
-            {props.weather ? (
-              <WeatherCard weather={props.weather} />
-            ) : (
-              <h3>No data</h3>
-            )}
+            {props ? <WeatherCard weather={props.weather} /> : <h3>No data</h3>}
           </section>
         </div>
       </form>

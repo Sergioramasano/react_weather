@@ -1,5 +1,5 @@
 import { TextField } from "@material-ui/core";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import { connect } from "react-redux";
 import { setCity, setCityWeather } from "../../redux/actionCreators";

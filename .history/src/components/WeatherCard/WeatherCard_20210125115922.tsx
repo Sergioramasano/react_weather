@@ -9,7 +9,7 @@ const WeatherCard = ({ weather }: any) => {
   return (
     <Card className="Card">
       <CardContent>
-        {weather ? (
+        {weather.weather[0].icon ? (
           <img
             src={`http://openweathermap.org/img/wn/${weather.weather[0].icon}.png`}
             alt="icon"

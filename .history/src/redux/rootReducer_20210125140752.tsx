@@ -12,7 +12,7 @@ interface IState {
   cityWeather: any;
 }
 
-const initialState: IState = {
+const initialState = {
   counter: 0,
   city: "",
   cityWeather: null,

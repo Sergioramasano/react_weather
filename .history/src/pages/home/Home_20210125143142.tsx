@@ -1,5 +1,5 @@
 import { TextField } from "@material-ui/core";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import { connect } from "react-redux";
 import { setCity, setCityWeather } from "../../redux/actionCreators";
@@ -19,10 +19,14 @@ const useStyles = makeStyles((theme) => ({
 
 const Home = (props: any) => {
   const classes = useStyles();
-  const [errorState, setErrorState] = useState(false);
+  const [errorState, setErrorState] = useState(true);
+  useEffect(() => {
+    setError();
+  });
 
   const inputHandler = (event: any): any => {
-    setError();
+    console.log();
+
     if (event.key === "Enter") {
       event.preventDefault();
       props.setCityName(event.target.value);
@@ -43,9 +47,8 @@ const Home = (props: any) => {
       return "it is the required field!";
     }
   };
-
   const setError = () => {
-    if (props.cityName) {
+    if (!props.cityName) {
       setErrorState(true);
     } else {
       setErrorState(false);
