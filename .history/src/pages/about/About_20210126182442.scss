@@ -1,0 +1,24 @@
+.about {
+  color: red;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding: 1rem;
+  &_card {
+    padding: 2rem;
+    max-width: 800px;
+  }
+  h1 {
+    margin-bottom: 2rem;
+    @media screen and (max-width: 768px) {
+      font-size: 1rem;
+    }
+  }
+  p {
+    line-height: 1.8;
+  }
+  a {
+    text-decoration: none;
+    color: rgba(117, 13, 48, 0.911);
+  }
+}

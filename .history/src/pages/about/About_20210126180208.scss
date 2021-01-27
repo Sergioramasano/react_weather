@@ -1,0 +1,9 @@
+.about {
+  color: red;
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+  p {
+    max-width: 500px;
+  }
+}
