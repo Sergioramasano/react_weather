@@ -1,0 +1,28 @@
+html {
+  background: rgb(228, 236, 236);
+  background: linear-gradient(
+    63deg,
+    rgba(228, 236, 236, 1) 0%,
+    rgba(221, 251, 255, 1) 100%
+  );
+}
+
+.alert-error {
+  position: fixed;
+  top: 0;
+  right: 0;
+  margin: 1rem;
+  z-index: 999;
+}
+
+.flex {
+  display: flex;
+}
+
+.between {
+  justify-content: space-between;
+}
+
+.center {
+  align-items: center;
+}
