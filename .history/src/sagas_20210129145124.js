@@ -29,7 +29,7 @@ export function* setCityWeather(action) {
   } catch (error) {
     yield put({
       type: SET_ERROR,
-      payload: `Некорректное название города. ${error.message}`,
+      payload: `Некорректное название города, ${error.message}`,
     });
   }
 }

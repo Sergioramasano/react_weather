@@ -1,13 +1,12 @@
 import axios from "axios";
 import { put, takeEvery } from "redux-saga/effects";
-import { SET_CITY_WEATHER, SET_CITY, SET_ERROR } from "./redux/actionTypes";
 let weather = null;
 
 // ...
 
 // Наша Сага-наблюдатель: создаёт новые setCityWeather задачи на каждом SET_CITY
 export function* watchSetCityAsync() {
-  yield takeEvery(SET_CITY, setCityWeather);
+  yield takeEvery("SET_CITY", setCityWeather);
 }
 
 // Наша Сага-рабочий (worker Saga): будет выполнять асинхронную задачу получения погоды
@@ -22,14 +21,8 @@ export function* setCityWeather(action) {
         localStorage.setItem("weather", localData);
         weather = res.data;
       });
-    yield put({
-      type: SET_CITY_WEATHER,
-      payload: weather,
-    });
+    yield put(setCityWeather(weather));
   } catch (error) {
-    yield put({
-      type: SET_ERROR,
-      payload: `Некорректное название города. ${error.message}`,
-    });
+    yield put({ type: "SET_ERROR", payload: "Некорректное название города" });
   }
 }
